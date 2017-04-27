@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Camber Calculator</title>
+</head>
+<body>
+	<h1>Camber Calculator</h1>
+	<div>
+		<input class="update-results" type="number" id="wheel-diameter" placeholder="Wheel Diameter"> mm
+		<input class="update-results" type="number" id="top" placeholder="Top"> mm 
+		<input class="update-results" type="number" id="bottom" placeholder="Bottom"> mm
+	</div>
+	<div>
+		<p>Camber: <span id="camber-result"></span></p>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$('.update-results').on('change blur keyup', updateResults);
+		});
+
+		function updateResults () {
+			var top = parseFloat($('#top').val());
+			var bottom = parseFloat($('#bottom').val());
+			var diameter = parseFloat($('#wheel-diameter').val());
+			var camber = calculateCamber(top, bottom, diameter);
+			displayResults(camber);
+		}
+
+		function displayResults (camber) {
+			if(isNaN(camber)){
+				$('#camber-result').html(result);
+				return;
+			}
+
+			var absCamber = Math.abs(camber)
+			var orientation = camber < 0 ? 'negative' : 'positive';
+			var result = camber.toFixed(2) + '&deg; (' + absCamber.toFixed(2) + '&deg; ' + orientation + ' camber)';
+			$('#camber-result').html(result);
+
+		}
+
+		function calculateCamber (top, bottom, diameter) {
+			var offset = bottom - top;
+			var camber = Math.sin(offset / diameter);
+			return radToDegrees(camber);
+		}
+
+		function radToDegrees (angle) {
+			return angle * (180 / Math.PI);
+		}
+	</script>
+</body>
+</html>
