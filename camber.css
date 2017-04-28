@@ -53,7 +53,7 @@ a:hover {
 }
 
 .lower-angle-display {
-    display: block;
+    display: none;
 }
 
 /* Custom default button */
@@ -129,7 +129,7 @@ body {
     width: 100%;
   }
   .lower-angle-display{
-      display: none;
+      display: none !important;
   }
 }
 

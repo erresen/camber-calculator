@@ -1,5 +1,20 @@
+var hasFocus = false;
+
 $(function(){
     $('.update-results').on('change blur keyup', updateResults);
+    
+    $('.update-results').focus(function(){
+        hasFocus = true;
+        $('.lower-angle-display').fadeIn('slow');
+    });
+    $('.update-results').focusout(function(){
+        hasFocus = false;
+        setTimeout(function(){
+            if (!hasFocus){
+                $('.lower-angle-display').fadeOut('slow');
+            }
+        }, 500);
+    });
     updateResults();
 });
 
