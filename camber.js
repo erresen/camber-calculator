@@ -21,7 +21,7 @@ function displayResults (camber) {
             orientation = 'negative ';                
         }
         var absCamber = Math.abs(camber);
-        angleText = absCamber.toFixed(2) + '&deg;';
+        angleText = parseFloat(absCamber.toFixed(2)) + '&deg;';
     }
     $('.angle').html(angleText);
     $('.orientation').html(orientation + 'camber');

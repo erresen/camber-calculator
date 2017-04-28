@@ -9,6 +9,34 @@ a:hover {
   color: #fff;
 }
 
+.input-group .input-group-addon {
+  text-shadow: none; /* Prevent inheritance from `body` */    
+}
+
+.input-group {
+    padding: 10px;
+}
+
+.input-holder {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.orientation {
+    text-transform: uppercase;
+    font-weight: lighter;
+    font-size: 1.5em;
+}
+
+.angle {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.angle-display {
+    margin-bottom: 5px;
+}
+
 /* Custom default button */
 .btn-default,
 .btn-default:hover,
@@ -116,7 +144,10 @@ body {
   padding: 10px 20px;
   font-weight: bold;
 }
-
+.cover h1 {
+    text-transform: uppercase;
+    font-weight: lighter;
+}
 
 /*
  * Footer
