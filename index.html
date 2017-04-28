@@ -1,56 +1,63 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Camber Calculator. Calculate camber with three simple measurements">
+    <meta name="author" content="Erresen">
+    <link rel="icon" href="../../favicon.ico">
+
 	<title>Camber Calculator</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">	
+	<link rel="stylesheet" href="camber.css">	
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body>
-	<h1>Camber Calculator</h1>
-	<div>
-		<input class="update-results" type="number" id="wheel-diameter" placeholder="Wheel Diameter"> mm
-		<input class="update-results" type="number" id="top" placeholder="Top"> mm 
-		<input class="update-results" type="number" id="bottom" placeholder="Bottom"> mm
+	<div class="site-wrapper">
+		<div class="site-wrapper-inner">
+			<div class="cover-container">
+				<div class="masthead clearfix">
+					<div class="inner">
+					</div>
+				</div>
+
+				<div class="inner cover">
+					<h1 class="cover-heading">Camber Calculator</h3>
+					<div class="angle-display row">
+						<div class="angle"></div>
+						<div class="orientation"></div>
+					</div>
+					<div>
+                        <div class="input-group">
+                            <span class="input-group-addon">&#8960;</span>
+						    <input class="form-control update-results" type="number" id="wheel-diameter" placeholder="Wheel Diameter" aria-label="Wheel Diameter" value="431">
+                            <span class="input-group-addon">mm</span>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon">Top</span>
+						    <input class="form-control update-results" type="number" id="top" placeholder="Top Measurement" aria-label="Top Measurement" value="0"> 
+                            <span class="input-group-addon">mm</span>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon">Bottom</span>
+						    <input class="form-control update-results" type="number" id="bottom" placeholder="Bottom Measurement" aria-label="Bottom Measurement" value="0">
+                            <span class="input-group-addon">mm</span>
+                        </div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div>
-		<p>Camber: <span id="camber-result"></span></p>
-	</div>
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script>
-		$(function(){
-			$('.update-results').on('change blur keyup', updateResults);
-		});
-
-		function updateResults () {
-			var top = parseFloat($('#top').val());
-			var bottom = parseFloat($('#bottom').val());
-			var diameter = parseFloat($('#wheel-diameter').val());
-			var camber = calculateCamber(top, bottom, diameter);
-			displayResults(camber);
-		}
-
-		function displayResults (camber) {
-			if(isNaN(camber)){
-				$('#camber-result').html(result);
-				return;
-			}
-
-			var absCamber = Math.abs(camber)
-			var orientation = camber < 0 ? 'negative' : 'positive';
-			var result = camber.toFixed(2) + '&deg; (' + absCamber.toFixed(2) + '&deg; ' + orientation + ' camber)';
-			$('#camber-result').html(result);
-
-		}
-
-		function calculateCamber (top, bottom, diameter) {
-			var offset = bottom - top;
-			var camber = Math.sin(offset / diameter);
-			return radToDegrees(camber);
-		}
-
-		function radToDegrees (angle) {
-			return angle * (180 / Math.PI);
-		}
-	</script>
+	<script src="camber.js"></script>
 </body>
 </html>
