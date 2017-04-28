@@ -34,16 +34,26 @@ a:hover {
 .orientation {
     text-transform: uppercase;
     font-weight: lighter;
+}
+
+.angle-display .orientation {
     font-size: 1.5em;
 }
 
 .angle {
-    font-size: 3em;
     font-weight: bold;
+}
+
+.angle-display .angle {
+    font-size: 3em;
 }
 
 .angle-display {
     margin-bottom: 5px;
+}
+
+.lower-angle-display {
+    display: block;
 }
 
 /* Custom default button */
@@ -117,6 +127,9 @@ body {
   }
   .cover-container {
     width: 100%;
+  }
+  .lower-angle-display{
+      display: none;
   }
 }
 
