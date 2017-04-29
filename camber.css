@@ -56,6 +56,10 @@ a:hover {
     display: none;
 }
 
+.diagram {
+    min-height: 100%;
+}
+
 /* Custom default button */
 .btn-default,
 .btn-default:hover,
